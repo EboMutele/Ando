@@ -89,6 +89,13 @@ export function db(): Database.Database {
   instance.pragma('journal_mode = WAL');
   instance.pragma('foreign_keys = ON');
   instance.exec(SCHEMA);
+  // Analysis runs in-process; a restart mid-check would leave it spinning forever.
+  instance
+    .prepare(
+      `UPDATE checks SET status = 'failed', stage = 'done', error = 'Analysis was interrupted. Please try the clip again.'
+       WHERE status = 'processing' AND created_at < ?`,
+    )
+    .run(new Date(Date.now() - 10 * 60_000).toISOString());
   return instance;
 }
 
