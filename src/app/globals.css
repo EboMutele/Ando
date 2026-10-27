@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #f7f5f0;
+  --surface: #fcfcfb;
+  --surface-2: #f0eee8;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #7a7974;
+  --line: #e1e0d9;
+  --axis: #c3c2b7;
+  --brand: #1f6f5c;
+  --brand-ink: #ffffff;
+  --series: #2a78d6;
+  --good: #0ca30c;
+  --good-text: #006300;
+  --warning: #fab219;
+  --critical: #d03b3b;
+  --serious: #ec835a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #121211;
+    --surface: #1a1a19;
+    --surface-2: #232321;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --ink-3: #8f8e88;
+    --line: #2c2c2a;
+    --axis: #383835;
+    --brand: #4fb39a;
+    --brand-ink: #0b0b0b;
+    --series: #3987e5;
+    --good-text: #0ca30c;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #121211;
+  --surface: #1a1a19;
+  --surface-2: #232321;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --ink-3: #8f8e88;
+  --line: #2c2c2a;
+  --axis: #383835;
+  --brand: #4fb39a;
+  --brand-ink: #0b0b0b;
+  --series: #3987e5;
+  --good-text: #0ca30c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-good: var(--good);
+  --color-warning: var(--warning);
+  --color-critical: var(--critical);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--brand);
+  color: var(--brand-ink);
+  transition: opacity 0.15s;
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.field {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem; /* ≥16px stops iOS zooming into inputs */
+}
